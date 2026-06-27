@@ -49,6 +49,9 @@ AI 侧以 **Claude Code 的 channel 插件**形态运行——你在手机上发
 
 > 想换 channel 名字？三处保持一致即可：`.mcp.json` 的键名、启动 flag 里的 `server:<name>`、`RELAY_CHANNEL_NAME`。默认都是 `companion`。
 
+> 🤖 **准备把这个仓库甩给 AI 帮你部署？** 读 **[AGENTS.md](AGENTS.md)** —— 专给 AI 助手写的部署 SOP + 决策树 + 避雷点清单。
+> 🔀 **不用 Claude Code，想用 GPT / DeepSeek / Gemini / 任意 OpenAI 兼容 API？** 前后端原样不动，AI 侧改用 **[examples/bridge_any_llm.py](examples/bridge_any_llm.py)**（一个 SSE→模型→relay 的薄循环，零依赖，填 env 就跑；细节见 [AGENTS.md §3](AGENTS.md)）。
+
 ---
 
 ## Path A · 完整部署（前端 + 后端 + 本地插件，全都自己跑）
@@ -96,6 +99,9 @@ claude --dangerously-load-development-channels server:companion
 ```
 
 启动后 stderr 出现 `[companion:boot] connected ...`，在 PWA 发一条 → CC 会话里冒出 `<channel source="companion" ...>` → 让 AI 调 `reply(chat_id="me", text="...")` → 手机收到气泡。**全链路通。**
+
+> ⚠️ 这个 flag 启动时 CC **每次会弹一个确认框**（DevChannelsDialog），无人值守会卡住。自动过的办法见 **[AGENTS.md §4](AGENTS.md)**：Linux 用 `tmux send-keys`，Windows 用 [`examples/confirm_dev_channel_win.py`](examples/confirm_dev_channel_win.py)。
+> 🔀 **不用 Claude Code 的话跳过这一步**，改用 [`examples/bridge_any_llm.py`](examples/bridge_any_llm.py) 接任意 LLM API。
 
 ---
 
