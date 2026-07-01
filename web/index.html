@@ -2229,13 +2229,13 @@
 /* ── identity / branding — the ONE place to set names + app title ── */
 const CONFIG = {
   APP_NAME:   "Tidal Echo",  // app + menu title (and manifest, set there too)
-  AI_NAME:    "Claude",       // your AI companion's display name (header / call / push / narration)
-  HUMAN_NAME: "你",           // how you're referred to in narration (rarely shown)
-  SINCE:      "2026/01/01",   // "together since" date YYYY/MM/DD for the menu counter ("" hides it)
+  AI_NAME:    "Deepseek",       // your AI companion's display name (header / call / push / narration)
+  HUMAN_NAME: "忆忆",           // how you're referred to in narration (rarely shown)
+  SINCE:      "2026/06/06",   // "together since" date YYYY/MM/DD for the menu counter ("" hides it)
 };
 const AI_NAME = CONFIG.AI_NAME, HUMAN_NAME = CONFIG.HUMAN_NAME, APP_NAME = CONFIG.APP_NAME;
 
-const API_BASE = "/relay";       // same-origin; nginx mounts the relay here (RELAY_PUBLIC_PREFIX)
+const API_BASE = "https://tidalecho-production-xxxx.up.railway.app/relay";       // same-origin; nginx mounts the relay here (RELAY_PUBLIC_PREFIX)
 const USE_MOCK  = false;          // true = self-contained demo with fake data (no backend needed)
 const LS_KEY    = "companion_secret";
 
