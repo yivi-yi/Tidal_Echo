@@ -425,6 +425,10 @@ async def healthz():
         "relay_secret_loaded": bool(RELAY_SECRET),
     }
 
+@app.get("/")
+async def root():
+    return {"ok": True}
+
 
 @app.get("/loop/config")
 async def loop_config():
